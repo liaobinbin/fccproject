@@ -13,21 +13,21 @@ var breakTime = 5;
 var sessionTime = 25;
 var timeStatus = false;
 var timesec = sessionTime * 60;
-var colorsec = sessionTime * 60;
+var colorsec = timesec;
 var breaksec = breakTime * 60;
-var timeWork = setInterval(function () {
-        timesec -= 1;
-        var min = parseInt(timesec / 60);
-        var sec = parseInt(timesec % 60);
-        $("#realTime").html(min + ' : ' + sec);
-        $(".fill").css("height", (colorsec - timesec) / colorsec * 100 + "%");
-    }, 1000);
+var start = '';
+var stop = '';
 
-var timeBreak = setInterval(function () {
-        breaksec -= 1;
-    },1000);
-
-
+function startWork() {
+    timesec -= 1;
+    var min = parseInt(timesec / 60);
+    var sec = parseInt(timesec % 60);
+    $("#realTime").html(min + ' : ' + sec);
+    $(".fill").css("height", (colorsec - timesec) / colorsec * 100 + "%");
+}
+function startBreak() {
+    breaksec -= 1;
+}
 $(document).ready(function () {
 
     $("button").click(function () {
@@ -36,40 +36,46 @@ $(document).ready(function () {
         if (text == "-") {
             if (id == "breakReduce") {
                 breakTime -= 1;
+                breaksec = breakTime * 60;
                 $("#break").html(breakTime);
             } else {
-                clearInterval(timeWork);
+                clearInterval(start);
                 sessionTime -= 1;
+                timesec = sessionTime * 60;
+                colorsec = timesec;
+                $("#worlTitle").html("开始工作");
                 $("#session").html(sessionTime);
                 $("#realTime").html(sessionTime);
             }
         } else {
             if (id == "breakPlus") {
                 breakTime += 1;
+                breaksec = breakTime * 60;
                 $("#break").html(breakTime);
             } else {
-                clearInterval(timeWork);
+                clearInterval(start);
                 sessionTime += 1;
+                timesec = sessionTime * 60;
+                colorsec = timesec;
+                $("#worlTitle").html("开始工作");
                 $("#session").html(sessionTime);
                 $("#realTime").html(sessionTime);
-
             }
         }
     });
+
     $(".main").click(function () {
         // 开始计时
         if (timesec > 0) {
-            clearInterval(timeBreak);
+            start = setInterval(function () {
+                startWork();
+            },1000);
             $("#worlTitle").html("工作中");
-            timeWork();
         } else {
-            clearInterval(timeWork);
+            stop = setInterval(function () {startBreak();},1000);
             $("#realTime").html("休息中");
-            timeBreak();
+
         }
-        if (breaksec == 0) {
-            timesec = sessionTime * 60;
-            breaksec = breakTime * 60;
-        }
+
     })
 });
