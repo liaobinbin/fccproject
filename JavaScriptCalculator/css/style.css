@@ -1,0 +1,19 @@
+.container {
+    width: 400px;
+    margin-top: 20%;
+    background: #3bd9d9;
+    padding: 20px;
+    border-radius: 5px;
+}
+body {
+    background: #46b8da;
+}
+input {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.btn-default {
+    width: 65px;
+    margin-bottom: 2px;
+}
