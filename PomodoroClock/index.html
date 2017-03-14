@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>freecocdecamp: Javascript Calculator</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>神TM的番茄计时器</h1>
+                <div class="control">
+                    <div class="break">
+                        <h5>休息时间</h5>
+                        <div class="break-control">
+                            <button id="breakReduce" value="-">-</button>
+                            <strong id="break">5</strong>
+                            <button id="breakPlus" value="+">+</button>
+                        </div>
+                    </div>
+                    <div class="session">
+                        <h5>工作时间</h5>
+                        <div class="session-control">
+                            <button id="sessionReduce" value="-">-</button>
+                            <strong id="session">25</strong>
+                            <button id="sessionPlus" value="+">+</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="start">
+                    <div class="main">
+                        <h1 id="worlTitle">开始工作</h1>
+                        <h1 id="realTime">25</h1>
+                        <span class="fill" style="height: 0%;background: #3bd9d9"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
